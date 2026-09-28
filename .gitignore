@@ -1,0 +1,50 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.log
+.env
+.env.*
+
+# Node.js
+node_modules/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+Thumbs.db
+.DS_Store
+
+backend/app/uploads/
+*.tsbuildinfo
+# Rapports et soutenance
+Rapport/
+*.pptx
+*.docx
+
+# Fichiers temporaires
+_clean_check/
+_test_final_unzip/
+_ppt_unzip/
+_ppt_assets/
+_test_final.zip
+_deck.zip
+_clean_check.zip
+_inspect_ppt.py
+_rebuild_soutenance.py
+_refonte_soutenance.py
+
+# LinkedIn / photos
+linkedin_carousel/
+linkedin_post_visual.png
+photos_linkedin/
+
+# Windows
+desktop.ini
+# Données de test sensibles
+backend/tests/fixtures/*.pdf
