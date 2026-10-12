@@ -5,17 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Motee Ibn M'rabet — AI & Data Engineer, final-year engineering student seeking a research-oriented PFE starting February 2027.">
   <meta name="theme-color" content="#050a13">
-  <title>Motee Ibn M'rabet — AI & Data Engineer</title>
+  <title>Motee Ibn M'rabet — AI &amp; Data Engineer</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <p>CI/CD Docker test 🚀</p>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="index.html" aria-label="Motee Ibn M'rabet home">MIM<span>/AI</span></a>
       <nav aria-label="Primary navigation">
-        <a href="#work">Work</a><a href="#stack">Stack</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+        <a href="#work">Work</a>
+        <a href="#stack">Stack</a>
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -31,6 +34,7 @@
         <p class="hero-tagline">I build end-to-end intelligent systems across document AI, NLP, LLMs, vector search and data-driven applications.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">→</span></a>
+          <button class="button" onclick="document.getElementById('mim-ai-trigger').click();">💬 Ask AI Copilot</button>
           <a class="button" href="CV_Name.pdf" download>Download CV</a>
           <a class="button" href="https://www.linkedin.com/in/motee-ibn-m-rabet-7955bb354/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
@@ -98,7 +102,55 @@
 
     <section class="section contact-section" id="contact" aria-labelledby="contact-title"><div class="container contact-grid"><div><p class="eyebrow">05 / CONTACT</p><h2 id="contact-title">Let's discuss a research problem.</h2><p>For a PFE, research collaboration or an AI engineering opportunity.</p></div><div class="contact-links"><a href="mailto:motee.ibnmrabet1@gmail.com"><span>EMAIL</span><strong>motee.ibnmrabet1@gmail.com</strong></a><a href="https://www.linkedin.com/in/motee-ibn-m-rabet-7955bb354/" target="_blank" rel="noopener"><span>LINKEDIN</span><strong>Motee Ibn M'rabet</strong></a><div><span>LOCATION</span><strong>Tangier, Morocco</strong></div></div></div></section>
   </main>
+
   <footer><div class="container footer-wrap"><span>© 2026 Motee Ibn M'rabet</span><span>AI / DATA / RESEARCH ENGINEERING</span></div></footer>
+
+  <!-- ========================================== -->
+  <!-- FLOATING MIM-AI COPILOT ASSISTANT -->
+  <!-- ========================================== -->
+  <button id="mim-ai-trigger" aria-label="Open MIM-AI Copilot assistant">
+    <span class="ai-pulse-dot" aria-hidden="true"></span>
+    <span>🤖 MIM-AI COPILOT</span>
+  </button>
+
+  <div id="mim-ai-drawer" aria-hidden="true" role="dialog" aria-labelledby="chat-heading">
+    <div class="chat-header">
+      <div class="chat-title">
+        <strong id="chat-heading">MIM-AI // Career Copilot</strong>
+        <span>● ONLINE</span>
+      </div>
+      <div class="chat-header-actions">
+        <button id="mim-chat-clear" class="chat-icon-btn" title="Réinitialiser la conversation">Clear</button>
+        <button id="mim-chat-close" class="chat-icon-btn" title="Fermer" aria-label="Fermer le chat">✕</button>
+      </div>
+    </div>
+
+    <div id="mim-chat-messages" class="chat-messages" role="log" aria-live="polite">
+      <div class="chat-msg bot">
+        <div class="msg-avatar">MIM</div>
+        <div class="msg-content">
+          Bonjour ! 👋 Je suis <strong>MIM-AI</strong>, l'assistant intelligent du portfolio de Motee Ibn M'rabet.<br><br>
+          Posez-moi une question sur ses <strong>projets IA/LLM</strong>, ses compétences, sa disponibilité pour un <strong>PFE en Février 2027</strong>, ou son expérience chez Edge Consulting !
+        </div>
+      </div>
+    </div>
+
+    <div class="quick-prompts-bar">
+      <button class="chat-chip" data-query="Est-il disponible pour un PFE en Février 2027 ?">💼 PFE Fév 2027</button>
+      <button class="chat-chip" data-query="Quels sont ses projets en LLM et NLP ?">🧠 Projets LLM</button>
+      <button class="chat-chip" data-query="Résume son projet Virtuo.">📄 Projet Virtuo</button>
+      <button class="chat-chip" data-query="Quelle est son expérience chez Edge Consulting ?">📊 Edge Consulting</button>
+      <button class="chat-chip" data-query="Quelles sont ses compétences en Computer Vision ?">👁️ Vision &amp; OCR</button>
+    </div>
+
+    <form id="mim-chat-form" class="chat-input-bar">
+      <input id="mim-chat-input" class="chat-input-field" type="text" placeholder="Posez une question à MIM-AI..." autocomplete="off">
+      <button type="submit" class="chat-send-btn">Envoyer →</button>
+    </form>
+  </div>
+
+  <script src="api-config.js"></script>
   <script src="site.js"></script>
+  <script src="ai-engine.js"></script>
 </body>
 </html>

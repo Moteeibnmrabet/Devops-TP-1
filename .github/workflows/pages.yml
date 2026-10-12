@@ -1,0 +1,57 @@
+name: Deploy portfolio to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'motee-portfolio/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: vars.MIM_API_BASE_URL != ''
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate backend URL
+        env:
+          MIM_API_BASE_URL: ${{ vars.MIM_API_BASE_URL }}
+        run: |
+          if [[ ! "$MIM_API_BASE_URL" =~ ^https:// ]]; then
+            echo "::error::Set the repository Actions variable MIM_API_BASE_URL to the public HTTPS URL of the Render backend."
+            exit 1
+          fi
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Configure portfolio API URL
+        env:
+          MIM_API_BASE_URL: ${{ vars.MIM_API_BASE_URL }}
+        run: |
+          python -c "import json, os; open('motee-portfolio/api-config.js', 'w').write('window.MIM_API_BASE_URL = ' + json.dumps(os.environ['MIM_API_BASE_URL'].rstrip('/')) + ';\\n')"
+
+      - name: Upload portfolio artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: motee-portfolio
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
